@@ -1,0 +1,6 @@
+.board {
+    display: none;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+

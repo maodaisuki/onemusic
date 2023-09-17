@@ -1,0 +1,62 @@
+.music-list-page-container {
+    display: none;
+    flex-direction: row;
+    grid-template-rows: 70% auto;
+    height: 100%;
+}
+
+.music-list-container {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;   /* IE 10+ */
+}
+
+::-webkit-scrollbar {
+    display: none;  /* Chrome Safari */
+}
+
+.music-list-bottom-btn {
+    background-color: #e0e5ec;
+    width: 100%;
+    bottom: 0;
+}
+
+.music-list ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.music-list ul {
+    position: flex;
+    align-items: center;
+}
+
+.music-list ul li {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(134, 134, 134);
+}
+
+.item-num {
+    float: left;
+    line-height: 1.8em;
+    font-size: 1.2em;
+    width: 45px;
+    padding-right: 10px;
+}
+
+.item-num span {
+    float: right;
+}
+
+.item-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-detail .music-name {
+    font-size: 1em;
+}
+
+.item-detail .music-artists {
+    font-size: 0.8em;
+    color: rgb(91, 90, 90);
+}
