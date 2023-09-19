@@ -17,38 +17,40 @@
         <div class="iphone neu">
             <div class="title">
                 <div class="btn music-list-btn" onclick="bar()"><i class="fa-solid fa-bars fa-lg"></i></div>
-                <div style="display: flex; align-items: center;">NOW PLAYING</div>
+                <div style="display: flex; align-items: center; font-size: 1.2em">マストドン音楽好き部</div>
                 <div class="btn info" onclick="showMoreInfo()">
                     <i class="fa-solid fa-ellipsis fa-lg"></i>
                 </div>
             </div>
-            <div class="info-page board animate__animated animate__zoomIn animate__faster" style="font-size: 1em; font-weight: lighter; word-wrap: break-word;">
-                平远江山极目回，古祠漠漠背城开。
-                莫嫌举世无知己，未有庸人不忌才。
-                放逐肯消亡国恨？岁时犹动楚人哀！
-                湘兰沅芷年年绿，想见吟魂自往来。
+            <div class="info-page board animate__animated animate__zoomIn animate__faster"
+                style="font-size: 1em; font-weight: lighter; word-wrap: break-word;">
+                Github 仓库地址：<a href="https://github.com/maodaisuki/onemusic">onemusic</a>.
             </div>
             <div class="main-item">
                 <div class="album-cover">
-                    <img src="./assets/img/ICON1.png" alt="">
-                    <h2 class="song-title">
-                        Untitled
-                    </h2>
-                    <h3 class="artist-title">
-                        Unamed
-                    </h3>
+                    <img src="./assets/img/cover.png" alt="">
+                    <div class="song-title">
+                        <span id="scroll1">Untitled</span>
+                    </div>
+                    <div class="artist-title">
+                        <span id="scroll2">Unamed</span>
+                    </div>
                 </div>
-                <audio id="player" preload="auto"
-                    src="https://maolist.nyanyanyapu.workers.dev/?file=/Music/%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%B8%85%E6%98%8E%E9%9B%A8%E4%B8%8A.mp3"></audio>
+                <audio id="player" preload="auto" src="https://maolist.nyanyanyapu.workers.dev/?file=/Music/%E3%83%9E%E3%82%B9%E3%83%88%E3%83%89%E3%83%B3%E9%9F%B3%E6%A5%BD%E5%A5%BD%E3%81%8D%E9%83%A8/Love%20so%20sweet(Reborn).mp3">
+                </audio>
                 <div class="track neu">
                     <div class="track-line">
                     </div>
+                    <!-- <div class="buffer-container">
+                        <div class="buffer">
+                        </div>
+                    </div> -->
                 </div>
-                <div class="time"><span id="currentTime">00:00</span><span id="durationTime">00:00</span></div>
+                <div class="time"><span id="currentTime">00:00</span><span id="durationTime">03:28</span></div>
                 <div class="buttons">
-                    <button class="btn lg neu"><i class="fas fa-backward"></i></button>
-                    <button class="btn lg neu play-btn" onclick="playMusic()"><i class="fas fa-play"></i></button>
-                    <button class="btn lg neu"><i class="fas fa-forward"></i></button>
+                    <button class="btn lg neu" onclick="musicLeft()"><i class="fas fa-backward"></i></button>
+                    <button class="btn lg neu play-btn" onclick="playMusic(this)"><i class="fas fa-play"></i></button>
+                    <button class="btn lg neu" onclick="musicRight()"><i class="fas fa-forward"></i></button>
                     <button class="btn lg neu" onclick="controlVolume(this)"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
                 <!-- TODO 歌词页面 -->
@@ -60,240 +62,48 @@
             <div class="music-list-page-container r animate__animated animate__flipInY animate__faster">
                 <div class="music-list-container" style="overflow: auto;">
                     <div class="music-list">
-                        <ul>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        100.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="music-list-item">
-                                <div class="item-num">
-                                    <span>
-                                        1.
-                                    </span>
-                                </div>
-                                <div class="item-detail">
-                                    <div class="music-name">
-                                        ここではない星へ
-                                    </div>
-                                    <div class="music-artists">
-                                        結束バンド
-                                    </div>
-                                </div>
-                            </li>
+                        <ul id="music-list-detail">
+                            <script type="text/javascript">
+                                function initlist() {
+                                    fetch('/config.json', {
+                                        method: 'GET',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        }
+                                    })
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok');
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            // console.log(data)
+                                            // console.log(data.musiclist[nowplay].song);
+                                            // console.log(data.musiclist.length)
+                                            var str = "";
+                                            for(i = 0; i < data.musiclist.length; i++) {
+                                                // 音乐列表
+                                                str = str + "<div class=\"item-div\"><li onclick=\"musicListPlay(this)\" class=\"music-list-item\"><div class=\"item-num\"><span>" + data.musiclist[i].number + ".</span></div><div class=\"item-detail\"><div class=\"music-name\">" + "<span>" +data.musiclist[i].song + "</span>" + "</div><div class=\"music-artists\">" + "<span>" + data.musiclist[i].artist + "</span>" + "</div></div></li></div>";
+                                            }
+                                            document.getElementById('music-list-detail').innerHTML = str;
+                                        })
+                                        .catch(error => {
+                                            // 处理错误    
+                                            console.error('Fetch error:', error);
+                                        })
+
+                                }
+                                initlist()
+                            </script>
                         </ul>
                     </div>
                 </div>
                 <div class="music-list-bottom-btn-container">
                     <div class="buttons music-list-bottom-btn">
-                        <button class="btn lg neu"><i class="fas fa-backward"></i></button>
+                        <button class="btn lg neu" onclick="musicLeft(), bar()"><i class="fas fa-backward"></i></button>
                         <button class="btn lg neu play-btn" onclick="playMusic(this)"><i class="fas fa-play"></i></button>
-                        <button class="btn lg neu"><i class="fas fa-forward"></i></button>
+                        <button class="btn lg neu" onclick="musicRight(), bar()"><i class="fas fa-forward"></i></button>
                         <button class="btn lg neu" onclick="controlVolume(this)"><i class="fa-solid fa-volume-high"></i></button>
                     </div>
                     <div class="control-volume"">
@@ -304,21 +114,30 @@
         </div>
     </div>
 </body>
-<script src="./assets/js/fontawesome.js" crossorigin="anonymous"></script>
+<script src=" ./assets/js/fontawesome.js" crossorigin="anonymous">
+</script>
 <script type="text/javascript" src="./assets/js/jsmediatags.min.js"></script>
 <script type="text/javascript" src="./assets/js/main.js"></script>
-<script type="text/javascript" src="./assets/js/info.js"></script>
 <script>
-    setInterval(timeUpdate, 1000);
-    audio.addEventListener("canplay", function() {
-        updateInfo();
+    audio.addEventListener("timeupdate", function() {
+        durationTime = parseInt(audio.duration);
+        durationTime = transTime(durationTime)
+        currentTime = transTime(audio.currentTime);
+        var w = (audio.currentTime / audio.duration * 100).toFixed(2) + "%"; 
+        document.getElementsByClassName('track-line')[0].style.setProperty('width', w, 'important');
+        currentTimeElement.innerHTML = String(currentTime);
+        durationTimeElement.innerHTML = String(durationTime);
     })
-
     audio.addEventListener("ended", function() {
-        audio.pause();
-        var items = document.getElementsByClassName('play-btn')
-        items[0].getElementsByTagName("i")[0].setAttribute('class','fas fa-play');
-        items[1].getElementsByTagName("i")[0].setAttribute('class','fas fa-play');
+        var items = document.getElementsByClassName('play-btn');
+        nowplay = nowplay + 1;
+        currentTimeElement.innerHTML = String("loading~");
+        durationTimeElement.innerHTML = String("");
+        items[0].getElementsByTagName("i")[0].setAttribute('class', 'fas fa-play');
+        items[1].getElementsByTagName("i")[0].setAttribute('class', 'fas fa-play');
+        updateInfo(nowplay);
+        // audio.load();
+        playMusic();
     })
 </script>
 </html>

@@ -61,17 +61,39 @@ body {
 
 .iphone .album-cover .song-title {
     text-align: center;
+    font-size: 1.3em;
+    height: 1.3em;
+    width: 248px;
+    padding-top: 1.5em;
     padding-bottom: 0;
     margin-bottom: 0;
-    color: #65717e;
+    color: #646668;
+    overflow: hidden;
+}
+
+.song-title span {
+    position: relative;
+    white-space: nowrap;
 }
 
 .iphone .album-cover .artist-title {
     text-align: center;
-    padding: 1em 0;
+    height: 1.1em;
+    width: 248px;
+    overflow: hidden;
+    font-size: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 1em;
+    padding-left: 0;
+    padding-right: 0;
     margin: 0;
     font-size: 0.85em;
-    color: #65717e;
+    color: #646668;
+}
+
+.artist-title span {
+    position: relative;
+    white-space: nowrap;
 }
 
 .iphone .track {
@@ -82,7 +104,7 @@ body {
     align-items: center;
 }
 
-.iphone .track div {
+.iphone .track .track-line {
     width: 0%;
     height: 100%;
     background: #7e8a98;
@@ -94,8 +116,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    /* padding: 0.8em 0; */
-    padding-top: 1em;
+    /* padding: 0.1em 0; */
+    padding-top: 1.5em;   
     padding-bottom: 0.1em;
 }
 
@@ -141,6 +163,7 @@ body {
     overflow: auto;
     font-size: 0.8em;
     padding-top: 0.1em;
+    padding-bottom: 0.5em;
 }
 
 #currentTime {
@@ -153,4 +176,37 @@ body {
     width: auto;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(115, 115, 115);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* .buffer-container {
+    float: inline-end;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.75;
+    border-radius: 15px;
+}
+
+.buffer {
+    width: 0%;
+    height: 100%;
+    background-size: 40px 40px;
+    background-image: linear-gradient(
+        -45deg, #cad6e3 25%, #cad6e3 0, #e0e5ec 50%, #cad6e3 0, #cad6e3 75%, #e0e5ec 0
+    );
+    -webkit-animation: back-animation 10s infinite linear;
+}@-webkit-keyframes back-animation {
+    from {
+        background-position-x: 0px;
+    } to {
+        background-position-x: 600px;
+    }
+} */
 

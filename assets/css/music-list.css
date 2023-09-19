@@ -31,16 +31,32 @@
 }
 
 .music-list ul li {
-    padding-bottom: 5px;
+    height: 100%
+}
+
+.music-list-item:hover {
+    cursor: pointer;
+}
+
+.music-list-item:active {
+    
+}
+
+.item-div {
+    height: 35px;
+    padding: 5px 0;
+    overflow: hidden;
+    /* TODO hover 滚动 */
     border-bottom: 1px solid rgb(134, 134, 134);
 }
 
 .item-num {
     float: left;
-    line-height: 1.8em;
-    font-size: 1.2em;
+    height: 100%;
+    line-height: 35px;
+    font-size: 1.5em;
     width: 45px;
-    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .item-num span {
@@ -49,14 +65,20 @@
 
 .item-detail {
     display: flex;
+    width: auto;
     flex-direction: column;
+    margin-left: 0;
 }
 
 .item-detail .music-name {
-    font-size: 1em;
+    font-size: 15px;
+    height: 20px;
+    align-items: flex-start;
 }
 
 .item-detail .music-artists {
-    font-size: 0.8em;
+    font-size: 12px;
+    height: 15px;
+    align-items: flex-end;
     color: rgb(91, 90, 90);
 }
