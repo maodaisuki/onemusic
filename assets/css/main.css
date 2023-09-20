@@ -117,7 +117,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     /* padding: 0.1em 0; */
-    padding-top: 1.5em;   
+    padding-top: 0.8em;   
     padding-bottom: 0.1em;
 }
 
@@ -184,6 +184,124 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+#title {
+    color: black;
+    text-decoration: none;
+}
+
+#title:hover {
+    color: rgb(110, 110, 110);
+}
+
+.control-volume-container {
+    /* 音量调节时显示 */
+    display: flex; 
+    padding-top: 15px;
+    width: 100%;
+    align-items: center;
+}
+
+.volume-icon {
+    padding: 5px;
+}
+
+.control-input {
+    /* vertical-align: center; */
+    /* padding: 0; */
+    /* width: 100%;
+    height: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    box-shadow: -5px -5px 10px 0px #bababa, 5px 5px 15px 0px #626a76a8; */
+}
+
+.volume-range {
+    
+}
+
+input[type='range'] {
+    width: 220px;
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type='range'] {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0);
+    height: 5px;
+}
+
+input[type='range']:focus {
+    outline: none;
+}
+
+/* Chrome */
+/* 滑块输入轨道 */
+input[type='range']::-webkit-slider-runnable-track {
+    background-color: rgb(192, 192, 192);
+    height: 5px;
+    /* border-radius: 5px; */
+}
+
+/* 滑块 */
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 20px;
+    border-radius: 0;
+    background-color: #000000;
+    border: 1px solid black;
+    margin-top: -8px;
+    border-image: linear-gradient(rgb(134, 130, 130),rgb(134, 130, 130)) 0 fill / 8 10 8 0 / 0 0 0 99vw; /*绘制元素外矩形*/
+}
+
+input[type='range']::-webkit-slider-container {
+    /*其他样式*/
+    overflow-y: hidden;
+}
+
+
+/* FireFox */
+/* 进度轨道  */
+input[type="range"]::-moz-range-progress {
+    background-color: rgb(134, 130, 130);
+    height: 5px;
+    border-radius: 4px;
+}
+/* 输入轨道 */
+input[type="range"]::-moz-range-track {
+    background-color: rgb(192, 192, 192);
+    height: 5px;
+    border-radius: 2px;
+}
+/* 滑块 */
+input[type="range"]::-moz-range-thumb {
+    /* display: none; */
+    height: 10px;
+    width: 5px;
+    border-radius: 2px;
+}
+
+
+
+/* .volume {
+    float: left;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.407);
+    width: 40%;
+} */
+
+/* .volume-num {
+    float: right;
+    font-size: 0.8em;
+} */
 
 /* .buffer-container {
     float: inline-end;

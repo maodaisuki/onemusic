@@ -17,14 +17,16 @@
         <div class="iphone neu">
             <div class="title">
                 <div class="btn music-list-btn" onclick="bar()"><i class="fa-solid fa-bars fa-lg"></i></div>
-                <div style="display: flex; align-items: center; font-size: 1.2em">マストドン音楽好き部</div>
+                <div style="display: flex; align-items: center; font-size: 1.2em"><a id="title" href="https://mstdn.jp/tags/%E3%83%9E%E3%82%B9%E3%83%88%E3%83%89%E3%83%B3%E9%9F%B3%E6%A5%BD%E5%A5%BD%E3%81%8D%E9%83%A8" target="_blank">音楽好き部</a></div>
                 <div class="btn info" onclick="showMoreInfo()">
                     <i class="fa-solid fa-ellipsis fa-lg"></i>
                 </div>
             </div>
             <div class="info-page board animate__animated animate__zoomIn animate__faster"
                 style="font-size: 1em; font-weight: lighter; word-wrap: break-word;">
-                Github 仓库地址：<a href="https://github.com/maodaisuki/onemusic">onemusic</a>.
+                <div>
+                    Github 仓库地址：<a href="https://github.com/maodaisuki/onemusic">onemusic</a>.
+                </div>
             </div>
             <div class="main-item">
                 <div class="album-cover">
@@ -51,7 +53,23 @@
                     <button class="btn lg neu" onclick="musicLeft()"><i class="fas fa-backward"></i></button>
                     <button class="btn lg neu play-btn" onclick="playMusic(this)"><i class="fas fa-play"></i></button>
                     <button class="btn lg neu" onclick="musicRight()"><i class="fas fa-forward"></i></button>
-                    <button class="btn lg neu" onclick="controlVolume(this)"><i class="fa-solid fa-volume-high"></i></button>
+                    <button class="btn lg neu play-mode" onclick="changeMode(this)"><i class="fa-solid fa-right-long"></i></i></button>
+                    <!-- <i class="fa-solid fa-repeat"></i> -->
+                    <!-- <i class="fa-solid fa-shuffle"> -->
+                    <!-- <i class="fa-solid fa-right-long"></i> -->
+                </div>
+                <div class="control-volume-container animate__animated animate__fadeIn animate__faster" id="control-volume">
+                    <!-- 音量控制 -->
+                    <div class="volume-icon" onclick="audioMute()">
+                        <i class="fa-solid fa-volume-high fa-xs"></i>
+                        <!-- <i class="fa-solid fa-volume-xmark fa-xs"></i> -->
+                    </div>
+                    <div class="control-input" id="control-input1">
+                        <input class="volume-range" type="range" name="range" max="1" min="0" step="0.01" value="0.2" onchange="changeVolume1(this)"> 
+                        <!-- <div class="volume">
+                        </div> -->
+                    </div>
+                    <!-- <label class="volume-num">100</label> -->
                 </div>
                 <!-- TODO 歌词页面 -->
                 <!-- <div class="lyrics" onclick="showLyrics()">
@@ -93,7 +111,6 @@
                                             // 处理错误    
                                             console.error('Fetch error:', error);
                                         })
-
                                 }
                                 initlist()
                             </script>
@@ -105,18 +122,27 @@
                         <button class="btn lg neu" onclick="musicLeft(), bar()"><i class="fas fa-backward"></i></button>
                         <button class="btn lg neu play-btn" onclick="playMusic(this)"><i class="fas fa-play"></i></button>
                         <button class="btn lg neu" onclick="musicRight(), bar()"><i class="fas fa-forward"></i></button>
-                        <button class="btn lg neu" onclick="controlVolume(this)"><i class="fa-solid fa-volume-high"></i></button>
+                        <button class="btn lg neu play-mode" onclick="changeMode()"><i class="fa-solid fa-right-long"></i></button>
                     </div>
-                    <div class="control-volume"">
+                    <div class="control-volume-container animate__animated animate__fadeIn animate__faster" id="control-volume">
                         <!-- 音量控制 -->
+                        <div class="volume-icon" onclick="audioMute()">
+                            <i class="fa-solid fa-volume-high fa-xs"></i>
+                            <!-- <i class="fa-solid fa-volume-xmark fa-xs"></i> -->
+                        </div>
+                    <div class="control-input" id="control-input2">
+                        <input class="volume-range" type="range" name="range" max="1" min="0" step="0.01" value="0.2" onchange="changeVolume2(this)"> 
+                        <!-- <div class="volume">
+                        </div> -->
+                    </div>
+                    <!-- <label class="volume-num">100</label> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src=" ./assets/js/fontawesome.js" crossorigin="anonymous">
-</script>
+<script src=" ./assets/js/fontawesome.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./assets/js/jsmediatags.min.js"></script>
 <script type="text/javascript" src="./assets/js/main.js"></script>
 <script>
@@ -130,8 +156,23 @@
         durationTimeElement.innerHTML = String(durationTime);
     })
     audio.addEventListener("ended", function() {
+        // TODO 适应模式
+        if(modeStatus === 0) {
+            // 列表
+            nowplay = nowplay + 1;
+        }
+        else if(modeStatus === 1) {
+            // 单曲循环
+            nowplay = nowplay;
+        }
+        else if(modeStatus === 2) {
+            // 随机
+            nowplay = getRandomInt(data.musiclist.length - 1);
+        }
+        else {
+            
+        }
         var items = document.getElementsByClassName('play-btn');
-        nowplay = nowplay + 1;
         currentTimeElement.innerHTML = String("loading~");
         durationTimeElement.innerHTML = String("");
         items[0].getElementsByTagName("i")[0].setAttribute('class', 'fas fa-play');
@@ -139,6 +180,20 @@
         updateInfo(nowplay);
         // audio.load();
         playMusic();
+    })
+    audio.addEventListener('volumechange', function() {
+        if(audio.volume == 0) {
+            document.getElementsByClassName('volume-icon')[0].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-xmark fa-xs');
+            document.getElementsByClassName('volume-icon')[1].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-xmark fa-xs');
+            audio.muted = true;
+        }
+        else {
+            if(audio.muted == true) {
+                audio.muted = false;
+                document.getElementsByClassName('volume-icon')[0].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-high fa-xs');
+                document.getElementsByClassName('volume-icon')[1].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-high fa-xs');
+            }
+        }
     })
 </script>
 </html>

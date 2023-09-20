@@ -6,6 +6,11 @@ var durationTimeElement = document.getElementById('durationTime');
 var currentTime;
 var durationTime;
 var data;
+var modeList = ["fa-solid fa-right-long", "fa-solid fa-repeat", "fa-solid fa-shuffle"];
+// 列表播放、循环、随机 012
+var modeStatus =  0
+var isDown = false;
+
 // if(audio.currentTime == 0) {
 //     document.getElementsByClassName('buffer')[0].style.setProperty('width', "4%", 'important');
 // }
@@ -30,6 +35,10 @@ async function init() {
     audio.volume = 0.2;
     updateInfo(nowplay);
     console.log("init over");
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function showMoreInfo() {
@@ -74,10 +83,6 @@ function playMusic() {
         items[0].getElementsByTagName("i")[0].setAttribute('class', 'fas fa-play');
         items[1].getElementsByTagName("i")[0].setAttribute('class', 'fas fa-play');
     }
-}
-
-function controlVolume(id) {
-
 }
 
 // 处理歌曲信息
@@ -177,6 +182,44 @@ function musicRight() {
     document.getElementsByClassName('track-line')[0].style.setProperty('width', "0%", 'important');
     updateInfo(index);
     playMusic();
+}
+
+function changeMode() {
+    let index = modeStatus + 1;
+    if(index >= modeList.length) {
+        index = 0;
+    }
+    else {
+        // 理论正常范围？
+    }
+    document.getElementsByClassName('play-mode')[0].getElementsByTagName('i')[0].setAttribute('class', modeList[index]);
+    document.getElementsByClassName('play-mode')[1].getElementsByTagName('i')[0].setAttribute('class', modeList[index]);
+    modeStatus = index;
+}
+
+function audioMute() {
+    if(audio.muted) {
+        audio.muted = false;
+        document.getElementsByClassName('volume-icon')[0].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-high fa-xs');
+        document.getElementsByClassName('volume-icon')[1].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-high fa-xs');
+    }
+    else {
+        audio.muted = true;
+        document.getElementsByClassName('volume-icon')[0].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-xmark fa-xs');
+        document.getElementsByClassName('volume-icon')[1].getElementsByTagName('i')[0].setAttribute('class', 'fa-solid fa-volume-xmark fa-xs');
+    }
+}
+
+function changeVolume1(id) {
+    let volumeValue = id.value;
+    document.getElementsByClassName('volume-range')[1].value = id.value;
+    audio.volume = volumeValue;
+}
+
+function changeVolume2(id) {
+    let volumeValue = id.value;
+    document.getElementsByClassName('volume-range')[0].value = id.value;
+    audio.volume = volumeValue;
 }
 
 
