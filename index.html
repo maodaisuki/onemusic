@@ -84,7 +84,7 @@
                             <script type="text/javascript">
                                 function initlist() {
                                     // 本地测试用：config.json
-                                    fetch('/onemusic/config.json', {
+                                    fetch('/config.json', {
                                         method: 'GET',
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@
                                             var str = "";
                                             for(i = 0; i < data.musiclist.length; i++) {
                                                 // 音乐列表
-                                                str = str + "<div class=\"item-div\"><li onclick=\"musicListPlay(this)\" class=\"music-list-item\"><div class=\"item-num\"><span>" + data.musiclist[i].number + ".</span></div><div class=\"item-detail\"><div class=\"music-name\">" + "<span>" +data.musiclist[i].song + "</span>" + "</div><div class=\"music-artists\">" + "<span>" + data.musiclist[i].artist + "</span>" + "</div></div></li></div>";
+                                                str = str + "<div class=\"item-div\"><li onclick=\"musicListPlay(this)\" class=\"music-list-item\"><div class=\"item-num\"><span>" + data.musiclist[i].number + ".</span></div><div class=\"item-detail\"><div class=\"music-name\">" + "<div>" +data.musiclist[i].song + "</div>" + "</div><div class=\"music-artists\">" + "<div>" + "<div>" + data.musiclist[i].artist + "</div>" + "</div></div></li></div>";
                                             }
                                             document.getElementById('music-list-detail').innerHTML = str;
                                         })
@@ -195,5 +195,6 @@
             }
         }
     })
+    autoScroll();
 </script>
 </html>

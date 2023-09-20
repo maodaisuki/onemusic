@@ -25,7 +25,7 @@ init();
 
 async function init() {
     // 本地测试用： /config.json.
-    const res = await fetch('/onemusic/config.json', {
+    const res = await fetch('/config.json', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -220,6 +220,14 @@ function changeVolume2(id) {
     let volumeValue = id.value;
     document.getElementsByClassName('volume-range')[0].value = id.value;
     audio.volume = volumeValue;
+}
+
+function autoScroll() {
+
+}   
+
+function mainPageDetailAutoScroll() {
+
 }
 
 
