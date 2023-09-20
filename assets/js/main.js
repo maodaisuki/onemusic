@@ -222,4 +222,12 @@ function changeVolume2(id) {
     audio.volume = volumeValue;
 }
 
+function autoScroll() {
+
+}   
+
+function mainPageDetailAutoScroll() {
+
+}
+
 

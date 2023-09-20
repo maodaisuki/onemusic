@@ -38,9 +38,6 @@
     cursor: pointer;
 }
 
-.music-list-item:active {
-    
-}
 
 .item-div {
     height: 35px;
@@ -70,15 +67,37 @@
     margin-left: 0;
 }
 
-.item-detail .music-name {
+.item-detail .music-name div {
     font-size: 15px;
     height: 20px;
     align-items: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.item-detail .music-artists {
+.item-detail .music-artists div {
     font-size: 12px;
     height: 15px;
     align-items: flex-end;
     color: rgb(91, 90, 90);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* .item-detail .music-name i:hover { */
+    /* animation: scrollText 5s linear infinite; */
+    /* 使用名为 "scrollText" 的动画，无限循环，持续时间为5秒 */
+/* } */
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+        /* 文本内容初始位置 */
+    }
+
+    100% {
+        transform: translateX(-100%);
+        /* 文本内容最终位置，向左平移整个元素的宽度 */
+    }
 }
