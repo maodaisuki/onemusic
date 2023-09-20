@@ -25,7 +25,7 @@ init();
 
 async function init() {
     // 本地测试用： /config.json.
-    const res = await fetch('/config.json', {
+    const res = await fetch('/onemusic/config.json', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
