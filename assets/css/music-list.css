@@ -68,7 +68,7 @@
 }
 
 .item-detail .music-name div {
-    font-size: 15px;
+    font-size: 1em;
     height: 20px;
     align-items: flex-start;
     white-space: nowrap;
@@ -77,7 +77,7 @@
 }
 
 .item-detail .music-artists div {
-    font-size: 12px;
+    font-size: 0.8em;
     height: 15px;
     align-items: flex-end;
     color: rgb(91, 90, 90);
